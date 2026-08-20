@@ -1,0 +1,94 @@
+from __future__ import annotations
+
+from datetime import datetime
+from typing import Any
+
+from sqlalchemy import Boolean, CheckConstraint, DateTime, ForeignKey, Index, JSON, String, Text, func
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+
+
+class Base(DeclarativeBase):
+    pass
+
+
+class Agent(Base):
+    __tablename__ = "agents"
+    __table_args__ = (
+        Index("idx_agents_macro_domain", "macro_domain"),
+        Index("idx_agents_squad", "squad"),
+        Index("idx_agents_is_active", "is_active"),
+    )
+
+    agent_id: Mapped[str] = mapped_column(String, primary_key=True)
+    macro_domain: Mapped[str] = mapped_column(String, nullable=False)
+    squad: Mapped[str | None] = mapped_column(String, nullable=True)
+    name: Mapped[str] = mapped_column(String, nullable=False)
+    system_prompt_path: Mapped[str] = mapped_column(Text, nullable=False)
+    trigger_hooks: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
+    is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now()
+    )
+
+    tool_links: Mapped[list[AgentTool]] = relationship(
+        back_populates="agent",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
+
+
+class Tool(Base):
+    __tablename__ = "tools"
+    __table_args__ = (
+        CheckConstraint(
+            "tool_type IN ('mcp_server', 'fastmcp', 'python_script', 'webhook')",
+            name="ck_tools_tool_type",
+        ),
+        Index("idx_tools_type", "tool_type"),
+    )
+
+    tool_id: Mapped[str] = mapped_column(String, primary_key=True)
+    name: Mapped[str] = mapped_column(String, nullable=False)
+    description: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    tool_type: Mapped[str] = mapped_column(String, nullable=False)
+    connection_config: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False, default=dict)
+    read_only: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    input_schema: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False, default=dict)
+    output_schema: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False, default=dict)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now()
+    )
+
+    agent_links: Mapped[list[AgentTool]] = relationship(
+        back_populates="tool",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
+
+
+class AgentTool(Base):
+    __tablename__ = "agent_tools"
+    __table_args__ = (
+        Index("idx_agent_tools_agent_id", "agent_id"),
+        Index("idx_agent_tools_tool_id", "tool_id"),
+    )
+
+    agent_id: Mapped[str] = mapped_column(
+        ForeignKey("agents.agent_id", ondelete="CASCADE"), primary_key=True
+    )
+    tool_id: Mapped[str] = mapped_column(
+        ForeignKey("tools.tool_id", ondelete="CASCADE"), primary_key=True
+    )
+    permissions_override: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+
+    agent: Mapped[Agent] = relationship(back_populates="tool_links")
+    tool: Mapped[Tool] = relationship(back_populates="agent_links")

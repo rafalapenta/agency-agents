@@ -1,0 +1,74 @@
+name: aggency
+
+services:
+  router:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn src.router.app:app --host 0.0.0.0 --port 8000
+    environment:
+      CHROMA_HOST: chromadb
+      CHROMA_PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    ports:
+      - "${ROUTER_PORT:-8000}:8000"
+    depends_on:
+      chromadb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+    restart: unless-stopped
+
+  chromadb:
+    image: chromadb/chroma:1.5.9
+    environment:
+      IS_PERSISTENT: "TRUE"
+      PERSIST_DIRECTORY: /data
+      ANONYMIZED_TELEMETRY: "FALSE"
+    volumes:
+      - chroma-data:/data
+    ports:
+      - "${CHROMA_PORT:-8001}:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v2/heartbeat', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+    restart: unless-stopped
+
+  litellm:
+    profiles: ["gateway"]
+    image: ghcr.io/berriai/litellm:main-stable
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    volumes:
+      - ./src/gateway/litellm.config.yaml:/app/config.yaml:ro
+    env_file:
+      - path: .env
+        required: false
+    ports:
+      - "${LITELLM_PORT:-4000}:4000"
+    restart: unless-stopped
+
+  paperclip:
+    profiles: ["state"]
+    image: ghcr.io/paperclipai/paperclip:latest
+    environment:
+      HOST: 0.0.0.0
+      PAPERCLIP_HOME: /paperclip
+      PAPERCLIP_DEPLOYMENT_MODE: local_trusted
+      PAPERCLIP_DEPLOYMENT_EXPOSURE: private
+      PAPERCLIP_PUBLIC_URL: http://localhost:${PAPERCLIP_PORT:-3100}
+    volumes:
+      - paperclip-data:/paperclip
+    ports:
+      - "${PAPERCLIP_PORT:-3100}:3100"
+    restart: unless-stopped
+
+volumes:
+  chroma-data:
+  paperclip-data:

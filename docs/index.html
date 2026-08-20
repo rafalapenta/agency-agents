@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary SEO -->
+<title>Agentic OS (agentic-os) — Multi-Agent Dashboard &amp; GitHub Repository | opencode + Hermes + agy CLI</title>
+<meta name="description" content="Agentic OS (agentic-os) is a locally-hosted multi-agent orchestration OS and GitHub repository that coordinates opencode, Hermes Agent, and agy CLI into one dashboard with 15 skills, cron scheduler, cost analytics, persistent memory, and backup/restore.">
+<meta name="keywords" content="agentic-os, agentic os, agent os, multi-agent orchestration, ai agents, hermes agent, opencode, agy cli, agent dashboard, skills hub, cost analytics, devops automation, open source">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://modimihir07.github.io/agentic-os/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Agentic OS (agentic-os) — Multi-Agent Orchestration Dashboard &amp; GitHub Repository">
+<meta property="og:description" content="Agentic OS (agentic-os) is a locally-hosted multi-agent OS and GitHub repository — coordinates opencode, Hermes, and agy CLI into one dashboard with skills, scheduler, cost analytics, memory, and backup.">
+<meta property="og:url" content="https://modimihir07.github.io/agentic-os/">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agentic OS (agentic-os) — Multi-Agent Orchestration Dashboard &amp; GitHub Repository">
+<meta name="twitter:description" content="Agentic OS (agentic-os) is a locally-hosted multi-agent OS and GitHub repository — coordinates opencode, Hermes, and agy CLI into one dashboard with skills, scheduler, cost analytics, memory, and backup.">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Agentic OS",
+  "alternateName": "agentic-os",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Linux, macOS",
+  "description": "A locally-hosted multi-agent orchestration platform that coordinates opencode, Hermes Agent, and agy CLI into a unified dashboard with 15 skills, cron scheduling, cost analytics, persistent memory, and backup/restore.",
+  "url": "https://github.com/modimihir07/agentic-os",
+  "author": {
+    "@type": "Person",
+    "name": "Mihir Modi",
+    "url": "https://github.com/modimihir07"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236c5ce7'/%3E%3Cstop offset='100%25' stop-color='%23fd79a8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='32' height='32' rx='10' fill='url(%23g)' opacity='0.15'/%3E%3Crect x='4' y='4' width='28' height='28' rx='8' fill='none' stroke='url(%23g)' stroke-width='1.5'/%3E%3Cpolygon points='18,8 26,13 26,23 18,28 10,23 10,13' fill='none' stroke='url(%23g)' stroke-width='2' stroke-linejoin='round'/%3E%3Ccircle cx='18' cy='18' r='4' fill='url(%23g)'/%3E%3C/svg%3E">
+
+<style>
+:root {
+  --bg: #0d1117; --bg2: #151b24; --card: #1c2333;
+  --border: #293042; --text: #e6edf3; --text2: #8b949e;
+  --accent: #6c5ce7; --accent-light: #8b7cf7; --pink: #fd79a8;
+  --green: #00d4aa; --radius: 10px; --radius-lg: 16px;
+  --font: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* Hero */
+.hero { padding: 80px 0 60px; text-align: center; }
+.hero-logo { width: 72px; height: 72px; margin-bottom: 20px; }
+.hero h1 { font-size: 42px; font-weight: 800; letter-spacing: -1px; background: linear-gradient(135deg, var(--accent-light), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 18px; color: var(--text2); max-width: 640px; margin: 16px auto 32px; }
+.hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+.hero-badges img { height: 24px; }
+.hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: var(--radius); font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.25s; }
+.btn-primary { background: linear-gradient(135deg, var(--accent), #5a4bd1); color: white; }
+.btn-primary:hover { box-shadow: 0 4px 24px rgba(108,92,231,0.4); transform: translateY(-2px); }
+.btn-outline { border: 1px solid var(--border); color: var(--text); }
+.btn-outline:hover { border-color: var(--accent); background: var(--accent-glow, rgba(108,92,231,0.1)); }
+
+/* Sections */
+.section { padding: 60px 0; border-top: 1px solid var(--border); }
+.section h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+.section h2 span { color: var(--accent-light); }
+.section > p { color: var(--text2); font-size: 15px; margin-bottom: 32px; max-width: 600px; }
+
+/* Feature Grid */
+.feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.feature-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; transition: all 0.25s; }
+.feature-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+.feature-card .icon { font-size: 28px; margin-bottom: 10px; }
+.feature-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.feature-card p { font-size: 13px; color: var(--text2); }
+
+/* Architecture */
+.arch-diagram { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; font-family: var(--font-mono); font-size: 12px; line-height: 1.5; overflow-x: auto; white-space: pre; color: var(--text2); }
+.arch-diagram strong { color: var(--text); }
+
+/* Comparison table */
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+th { color: var(--text2); font-weight: 600; }
+td { color: var(--text); }
+.win { color: var(--green); font-weight: 600; }
+
+/* CTA */
+.cta { text-align: center; padding: 80px 0; border-top: 1px solid var(--border); }
+.cta h2 { font-size: 32px; margin-bottom: 12px; }
+.cta p { color: var(--text2); margin-bottom: 24px; }
+
+/* Footer */
+.footer { text-align: center; padding: 40px 0; color: var(--text2); font-size: 13px; border-top: 1px solid var(--border); }
+.footer a { color: var(--accent-light); text-decoration: none; }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 28px; }
+  .hero p { font-size: 15px; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .section { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <svg class="hero-logo" viewBox="0 0 36 36" width="72" height="72">
+      <defs><linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6c5ce7"/><stop offset="100%" stop-color="#fd79a8"/></linearGradient></defs>
+      <rect x="2" y="2" width="32" height="32" rx="10" fill="url(#lg)" opacity="0.15"/>
+      <rect x="4" y="4" width="28" height="28" rx="8" fill="none" stroke="url(#lg)" stroke-width="1.5"/>
+      <polygon points="18,8 26,13 26,23 18,28 10,23 10,13" fill="none" stroke="url(#lg)" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="18" cy="18" r="4" fill="url(#lg)"/>
+    </svg>
+    <h1>Agentic OS (agentic-os)</h1>
+    <p>A locally-hosted operating system for AI agents — an open-source GitHub repository orchestrating opencode, Hermes Agent, and agy CLI into one unified dashboard with persistent memory, cron scheduling, 15 skills, and cost analytics.</p>
+    <div class="hero-badges">
+      <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT">
+      <img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python">
+      <img src="https://img.shields.io/badge/agents-3-orange.svg" alt="3 Agents">
+      <img src="https://img.shields.io/badge/skills-15-purple.svg" alt="15 Skills">
+      <img src="https://img.shields.io/badge/status-stable-brightgreen.svg" alt="Stable">
+      <a href="https://dev.to/mihir_nmodi_14a06a4019e1/i-built-an-open-source-agent-os-2h30"><img src="https://img.shields.io/badge/dev.to-article-blue.svg" alt="dev.to"></a>
+    </div>
+    <div class="hero-buttons">
+      <a href="https://github.com/modimihir07/agentic-os" class="btn btn-primary">GitHub Repo</a>
+      <a href="https://github.com/modimihir07/agentic-os/blob/main/README.md" class="btn btn-outline">Documentation</a>
+      <a href="https://github.com/modimihir07/agentic-os/stargazers" class="btn btn-outline">⭐ Star on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Why <span>Agentic OS</span>?</h2>
+    <p>Most AI agent tools work in isolation — a terminal for coding, a chat for research, another tool for memory. Agentic OS is the control plane that unifies them: three agents, one dashboard, one memory layer, one scheduler, one skill hub.</p>
+    <div class="feature-grid">
+      <div class="feature-card"><div class="icon">🤖</div><h3>3-Agent Engine</h3><p>opencode (code/DevOps), Hermes (memory/scheduling), agy (research) with automatic task routing.</p></div>
+      <div class="feature-card"><div class="icon">🧩</div><h3>15 Skills</h3><p>Executable packs with eval scoring, learnings, and score history. Run from one click.</p></div>
+      <div class="feature-card"><div class="icon">🧠</div><h3>Persistent Memory</h3><p>Shared brain/ folder + Hermes SQLite FTS5 — all agents share context across sessions.</p></div>
+      <div class="feature-card"><div class="icon">⏱</div><h3>Cron Scheduler</h3><p>APScheduler jobs: heartbeat, standup, DevOps audit, memory consolidation. Fully configurable.</p></div>
+      <div class="feature-card"><div class="icon">💰</div><h3>Cost Analytics</h3><p>Track spending across providers with free-tier alerts. No surprise bills.</p></div>
+      <div class="feature-card"><div class="icon">💾</div><h3>One-Click Backup</h3><p>Full tar.gz snapshot of configs, skills, brain, agents, prompts. Full restore in one command.</p></div>
+      <div class="feature-card"><div class="icon">📋</div><h3>Audit Trail</h3><p>Every action logged — chat, skill runs, config changes, backups. Searchable event history.</p></div>
+      <div class="feature-card"><div class="icon">📝</div><h3>Prompt Library</h3><p>10 reusable templates: code review, system audit, project plan, brainstorm, and more.</p></div>
+      <div class="feature-card"><div class="icon">🎨</div><h3>Dark/Light Theme</h3><p>GitHub-style dark mode with clean light theme. Collapsible sidebar with agent status.</p></div>
+      <div class="feature-card"><div class="icon">⚡</div><h3>Zero API Costs</h3><p>Built for free tiers — Antigravity (agy), OpenRouter free models, local opencode. No subscription needed.</p></div>
+      <div class="feature-card"><div class="icon">📐</div><h3>Standards System</h3><p>Discover and inject project conventions automatically.</p></div>
+      <div class="feature-card"><div class="icon">🔌</div><h3>Plugin Registry</h3><p>Marketplace-style plugin management. Extend via custom skills.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Agent <span>Architecture</span></h2>
+    <p>Three specialized agents, one orchestration layer.</p>
+    <div class="arch-diagram">
+                    ┌──────────────────────────────────────────────┐
+                    │            AGENTIC OS DASHBOARD                │
+                    │         FastAPI + Tailwind SPA                 │
+                    ├──────────────────────────────────────────────┤
+                    │                                              │
+                    │  ┌──────────┐  ┌──────────┐  ┌──────────┐   │
+                    │  │ opencode │  │  Hermes  │  │   agy    │   │
+                    │  │Code/DevOp│  │Mem/Sched │  │Research  │   │
+                    │  └──────────┘  └──────────┘  └──────────┘   │
+                    │                                              │
+                    │  ┌──────────────────────────────────────┐   │
+                    │  │        7 CORE LAYERS (Stacked)        │   │
+                    │  │  Layer 7: Identity/Persona           │   │
+                    │  │  Layer 6: Self-Evolution             │   │
+                    │  │  Layer 5: Scheduler + Health         │   │
+                    │  │  Layer 4: Memory Graph               │   │
+                    │  │  Layer 3: Skills Hub + Eval          │   │
+                    │  │  Layer 2: Business Brain             │   │
+                    │  │  Layer 1: Agent Router               │   │
+                    │  └──────────────────────────────────────┘   │
+                    └──────────────────────────────────────────────┘
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Comparison: Agentic OS vs <span>Julian Goldie's Claude Agent OS</span></h2>
+    <p>An honest comparison of the two projects.</p>
+    <table>
+      <tr><th>Feature</th><th>Claude Agent OS (Video)</th><th>Agentic OS (This Project)</th></tr>
+      <tr><td>Core Agents</td><td>Claude + OpenClaw + Hermes</td><td>opencode + Hermes + agy CLI</td></tr>
+      <tr><td>Cost</td><td>$20/mo (Claude sub)</td><td class="win">$0 — all free tiers</td></tr>
+      <tr><td>Stack</td><td>Next.js + Tailwind</td><td>FastAPI + vanilla JS SPA</td></tr>
+      <tr><td>Architecture Layers</td><td>4 layers</td><td class="win">7 layers</td></tr>
+      <tr><td>Skills System</td><td>Plugin marketplace</td><td class="win">16 curated + eval scoring + learnings</td></tr>
+      <tr><td>Memory</td><td>Obsidian vault (external)</td><td class="win">Built-in brain/ + SQLite FTS5</td></tr>
+      <tr><td>Cron Scheduler</td><td>Not shown</td><td class="win">APScheduler jobs</td></tr>
+      <tr><td>Cost Tracking</td><td>Not shown</td><td class="win">Per-provider analytics</td></tr>
+      <tr><td>Backup/Restore</td><td>Not shown</td><td class="win">One-click snapshots</td></tr>
+      <tr><td>Audit Trail</td><td>Not shown</td><td class="win">Full activity log</td></tr>
+      <tr><td>Standards System</td><td>Not shown</td><td class="win">Discover/inject conventions</td></tr>
+      <tr><td>Client Timeout</td><td>Not shown</td><td class="win">200s AbortController</td></tr>
+      <tr><td>Kanban Board</td><td>Yes</td><td>No (not needed)</td></tr>
+      <tr><td>Open Source</td><td>No (tutorial only)</td><td class="win">MIT License</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Quick <span>Start</span></h2>
+    <p>Get running in 30 seconds.</p>
+    <div class="arch-diagram" style="white-space:normal">
+<strong style="color:var(--accent-light)">git clone https://github.com/modimihir07/agentic-os.git</strong>
+<strong style="color:var(--accent-light)">cd agentic-os</strong>
+<strong style="color:var(--accent-light)">chmod +x install.sh && ./install.sh</strong>
+<strong style="color:var(--accent-light)">./start.sh</strong>
+<span style="color:var(--text2)"># Open http://127.0.0.1:8080</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Ready to build your <span>Agent OS</span>?</h2>
+    <p>Agentic OS is free, open-source, and built for developers who want real control over their AI agents.</p>
+    <div class="hero-buttons">
+      <a href="https://github.com/modimihir07/agentic-os" class="btn btn-primary">⭐ Star on GitHub</a>
+      <a href="https://github.com/modimihir07/agentic-os/issues" class="btn btn-outline">Report Issue</a>
+      <a href="https://github.com/modimihir07/agentic-os/discussions" class="btn btn-outline">Join Discussion</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p><strong>Agentic OS</strong> — Built with ❤️ by <a href="https://github.com/modimihir07">Mihir Modi</a> &bull; MIT License &bull; <a href="https://github.com/modimihir07/agentic-os">GitHub</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
