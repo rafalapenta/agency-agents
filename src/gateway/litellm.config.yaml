@@ -1,0 +1,8 @@
+model_list: []
+
+litellm_settings:
+  drop_params: true
+
+# Provider models and credentials are intentionally deferred.
+# Enable the `gateway` Compose profile only after adding models here
+# and placing provider keys in an untracked .env file.
