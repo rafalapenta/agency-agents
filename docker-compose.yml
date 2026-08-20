@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  agency:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agency-core
+    ports:
+      - "${DASHBOARD_PORT:-8080}:8080"
+    environment:
+      - MODEL_PROVIDER=${MODEL_PROVIDER:-openai}
+      - MODEL_NAME=${MODEL_NAME:-gpt-4o-mini}
+      - DATABASE_URL=${DATABASE_URL:-sqlite:///./omniroute.db}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - CHROMA_PERSIST_DIR=${CHROMA_PERSIST_DIR:-./chroma_data}
+    volumes:
+      - agency_data:/app/data
+      - agency_chroma:/app/chroma_data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Optional: Redis for session/state caching
+  # redis:
+  #   image: redis:7-alpine
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data
+
+volumes:
+  agency_data:
+  agency_chroma:
+  # redis_data:

@@ -1,0 +1,94 @@
+# ========================================
+# AGency — .gitignore Blindado
+# Paradigma: Registry-as-a-Tool / Zero Context Bloat
+# ========================================
+
+# --- Secrets & Environment ---
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+
+# --- Databases ---
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+chroma_data/
+venv/
+.venv/
+env/
+env/
+
+# --- Logs ---
+*.log
+logs/
+.log
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- IDE & Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# --- Claude / Agent Local Configs ---
+.claude/
+.agents/
+!AGENTS.md
+
+# --- Hermes ---
+.hermes/
+!HERMES.md
+
+# --- Node ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# --- Docker ---
+docker-compose.override.yml
+
+# --- Tests & Coverage ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# --- Temporary & Scratch ---
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
